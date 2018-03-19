@@ -1,11 +1,9 @@
 p
   a> href=article_path(article) = article.title
   p
-    = article.like
-    ||
     a> href= '!#' Like
-
+    a> href= article_path(article) Edit
+    a> href=new_article_image_path(article) Add Image
+    a> href=new_article_text_path(article) Add Text
   p
     = article.like
-    ||
-    a> href= '!#' Like
