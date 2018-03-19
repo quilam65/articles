@@ -1,5 +1,5 @@
 class AddReferenceToImagesInArticles < ActiveRecord::Migration[5.1]
   def change
-    add_reference :articles, :images, index: true
+    add_reference  :images, :article, index: true
   end
 end

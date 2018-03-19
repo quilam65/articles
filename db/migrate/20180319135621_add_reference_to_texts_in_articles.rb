@@ -1,5 +1,5 @@
 class AddReferenceToTextsInArticles < ActiveRecord::Migration[5.1]
   def change
-    add_reference :articles, :texts, index: true
+    add_reference :texts, :article, index: true
   end
 end

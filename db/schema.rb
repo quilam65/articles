@@ -16,10 +16,6 @@ ActiveRecord::Schema.define(version: 20180319135621) do
     t.string "title"
     t.datetime "date_up"
     t.integer "like"
-    t.bigint "images_id"
-    t.bigint "texts_id"
-    t.index ["images_id"], name: "index_articles_on_images_id"
-    t.index ["texts_id"], name: "index_articles_on_texts_id"
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -27,6 +23,8 @@ ActiveRecord::Schema.define(version: 20180319135621) do
     t.string "image"
     t.integer "like"
     t.integer "no"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_images_on_article_id"
   end
 
   create_table "texts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -34,6 +32,8 @@ ActiveRecord::Schema.define(version: 20180319135621) do
     t.integer "no"
     t.integer "like"
     t.text "content"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_texts_on_article_id"
   end
 
 end

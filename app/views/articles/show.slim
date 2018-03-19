@@ -1,0 +1,9 @@
+h1 Text
+= @article.title
+= @article.date_up
+= render partial: 'images/image', collection: @article.images
+
+= render partial: 'texts/text', collection: @article.texts
+
+/ - Aricle.find(params[:id]).includes(:texts).includes(:images).order('image.no desc').each do |a|
+/   =a.
