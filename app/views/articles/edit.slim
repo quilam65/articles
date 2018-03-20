@@ -1,0 +1,13 @@
+h1 Edit Article
+= semantic_form_for @article do |f|
+  = f.input :title, :input_html => { :class => 'form-control'}
+  = f.input :date_up, :input_html => { :class => 'form-control'}
+  = f.actions :submit, :cancel
+
+- @article.images.each do |image|
+  p = image.headline
+  a> href=edit_article_image_path(@article, image) Edit
+
+- @article.texts.each do |text|
+  p =text.headline
+  a> href=edit_article_text_path(@article, text) Edit

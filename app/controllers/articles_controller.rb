@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :get_articles, only: [:show, :update, :destroy]
+  before_action :get_articles, only: [:show, :update, :destroy, :edit]
   before_action :article_params, only: [:create, :update]
   def index
     @articles = Article.public_acticle
@@ -8,9 +8,11 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   def update
-    @article.update(@articles_params)
-    return redirect_to article_path(@article), notice: "Create success!" if @article.update(@article_params)
+    return redirect_to article_path(@article), notice: "Create success!" if @article.save
     redirect_to :new,
     flash[:alert] = "Create error"
   end

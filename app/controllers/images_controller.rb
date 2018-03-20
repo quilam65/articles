@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :get_Texts, only: [:show, :update, :destroy]
+  before_action :get_image, only: [:show, :update, :destroy, :edit]
   before_action :image_params, only: [:create, :update]
   def index
     @images = Image.all
@@ -8,9 +8,11 @@ class ImagesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
   def update
-    @image.update(@images_params)
-    return redirect_to image_path(@image), notice: "Update success!" if @image.update(@images_params)
+    return redirect_to image_path(@image), notice: "Update success!" if @image.save
     redirect_to :new,
     flash[:alert] = "Create error"
   end
@@ -35,7 +37,7 @@ class ImagesController < ApplicationController
     def image_params
         @images_params = params.require(:image).permit(:headline, :no, :image, :article_id)
     end
-    def get_Texts
-      @image = image.find(params[:id])
+    def get_image
+      @image = Image.find(params[:id])
     end
 end

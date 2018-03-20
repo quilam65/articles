@@ -1,5 +1,5 @@
 class TextsController < ApplicationController
-  before_action :get_Texts, only: [:show, :update, :destroy]
+  before_action :get_Texts, only: [:show, :update, :destroy, :edit]
   before_action :text_params, only: [:create, :update]
   def index
     @texts = Text.all
@@ -9,8 +9,7 @@ class TextsController < ApplicationController
   end
 
   def update
-    @text.update(@texts_params)
-    return redirect_to article_path(@text.acticle), notice: "Update success!" if @text.update(@texts_params)
+    return redirect_to article_path(@text.acticle), notice: "Update success!" if @text.save
     redirect_to :new,
     flash[:alert] = "Create error"
   end
