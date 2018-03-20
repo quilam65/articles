@@ -7,10 +7,12 @@ h1 Edit Article
 - @article.images.each do |image|
   p = image.headline
   a> href=edit_article_image_path(@article, image) Edit
+  =link_to('Delete Image', article_image_path(@article, image), method: :delete, data: {confirm: 'Are you sure?'})
 
 - @article.texts.each do |text|
   p =text.headline
   a> href=edit_article_text_path(@article, text) Edit
+  =link_to('Delete Text',article_text_path(@article, text), method: :delete, data: {confirm: 'Are you sure?'})
 p
   a> href=new_article_image_path(@article) Add Image
   a> href=new_article_text_path(@article) Add Text

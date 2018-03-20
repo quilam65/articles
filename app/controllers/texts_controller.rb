@@ -24,8 +24,8 @@ class TextsController < ApplicationController
   end
 
   def destroy
-    return redirect_to texts_path, notice: "Delete success!" if @text.destroy
-    redirect_to texts_path,
+    return redirect_to edit_article_path(@text.article), notice: "Delete success!" if @text.destroy
+    redirect_to articles_path,
     flash[:alert] = "Delete error"
   end
 

@@ -3,5 +3,6 @@ p
   p
     a> href= '!#' Like
     a> href= edit_article_path(article) Edit
+    =link_to('Delete article', article_path(article), method: :delete, data: {confirm: 'Art you sure'})
   p
     = article.like

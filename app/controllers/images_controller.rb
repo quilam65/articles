@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    return redirect_to images_path, notice: "Delete success!" if @image.destroy
+    return redirect_to edit_article_path(@image.article), notice: "Delete success!" if @image.destroy
     redirect_to images_path,
     flash[:alert] = "Delete error"
   end
