@@ -12,14 +12,13 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    return redirect_to article_path(@article), notice: "Create success!" if @article.save
+    return redirect_to article_path(@article), notice: "Create success!" if @article.update(@articles_params)
     redirect_to :new,
     flash[:alert] = "Create error"
   end
 
   def create
     @article = Article.new(@articles_params)
-    binding.pry
     return redirect_to new_article_image_path(@article), notice: "Create success!" if @article.save
     redirect_to :new,
     flash[:alert] = "Create error"

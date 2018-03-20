@@ -12,13 +12,13 @@ class ImagesController < ApplicationController
   end
 
   def update
-    return redirect_to image_path(@image), notice: "Update success!" if @image.save
-    redirect_to :new,
+    return redirect_to edit_article_path(@image.article), notice: "Update success!" if @image.update(@images_params)
+    redirect_to edit_article_image_path(@image.article, @image),
     flash[:alert] = "Create error"
   end
 
   def create
-    @image = Image.new(image_params)
+    @image = Image.new(@images_params)
     return redirect_to new_article_text_path(@image.article), notice: "Create success!" if @image.save
     redirect_to :new,
     flash[:alert] = "Create error"

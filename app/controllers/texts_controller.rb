@@ -9,8 +9,8 @@ class TextsController < ApplicationController
   end
 
   def update
-    return redirect_to article_path(@text.acticle), notice: "Update success!" if @text.save
-    redirect_to :new,
+    return redirect_to edit_article_path(@text.article), notice: "Update success!" if @text.update(@texts_params)
+    redirect_to edit_article_text_path(:article_id => @text.article, id: @text),
     flash[:alert] = "Create error"
   end
 

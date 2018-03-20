@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   has_many :images
   scope :public_acticle, -> {where('date_up <= ?', Time.now)}
 
-  validates :title, :date_up, presence: true
+  # validates :title, :date_up, presence: true
 
   private
     def chage_time_zone
