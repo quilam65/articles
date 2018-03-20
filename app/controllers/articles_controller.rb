@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :get_articles, only: [:show, :update, :destroy, :edit]
+  before_action :get_articles, only: [:show, :update, :destroy, :edit, :like]
   before_action :article_params, only: [:create, :update]
   def index
     @articles = Article.public_acticle
@@ -33,6 +33,15 @@ class ArticlesController < ApplicationController
     redirect_to articles_path,
     flash[:alert] = "Delete error"
   end
+
+  def like
+    @article.like = @article.like.to_i + 1
+    return redirect_to article_path(@article), notice: 'You like article' if @article.save
+    redirect_to articles_path,
+    flash[:alert] = 'Error not found article'
+
+  end
+
   private
     def article_params
       @articles_params = params.require(:article).permit(:title, :date_up)

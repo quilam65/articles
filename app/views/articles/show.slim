@@ -1,4 +1,9 @@
 h1 Text
+p
+  |Like:
+  =@article.like
+  p
+    a> href=like_article_path(@article) Like acticle
 = @article.title
 = @article.date_up
 = render partial: 'images/image', collection: @article.images

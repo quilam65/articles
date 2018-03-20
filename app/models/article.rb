@@ -3,7 +3,6 @@ class Article < ApplicationRecord
   has_many :texts
   has_many :images
   scope :public_acticle, -> {where('date_up <= ?', Time.now)}
-
   # validates :title, :date_up, presence: true
 
   private
