@@ -6,9 +6,10 @@ p
     a> href=like_article_path(@article) Like acticle
 = @article.title
 = @article.date_up
-= render partial: 'images/image', collection: @article.images
 
-= render partial: 'texts/text', collection: @article.texts
+- a =(@article.images + @article.texts)
+- arrays = (a.sort_by &:no)
+- arrays.each do |array|
+  = render 'images/image', array: array
 
-/ - Aricle.find(params[:id]).includes(:texts).includes(:images).order('image.no desc').each do |a|
-/   =a.
+/ = render partial: 'texts/text', collection: @article.texts

@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    # @articles = Article.includes(:images).includes(:texts).find(params[:id])
   end
 
   def edit
