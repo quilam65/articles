@@ -1,12 +1,10 @@
 class TextsController < ApplicationController
-  before_action :get_Texts, only: [:show, :update, :destroy, :edit]
+  before_action :get_Texts, only: [:update, :destroy, :edit, :like]
   before_action :text_params, only: [:create, :update]
   def index
     @texts = Text.all
   end
 
-  def show
-  end
 
   def update
     return redirect_to edit_article_path(@text.article), notice: "Update success!" if @text.update(@texts_params)
@@ -29,6 +27,10 @@ class TextsController < ApplicationController
     return redirect_to texts_path, notice: "Delete success!" if @text.destroy
     redirect_to texts_path,
     flash[:alert] = "Delete error"
+  end
+
+  def like
+    like_compoment(@text, @text.article,'Like text success!', 'Error not like')
   end
   private
     def text_params

@@ -2,3 +2,8 @@ p
   p = text.headline
   p = text.like
   p = text.content
+p.like
+  |Like:
+  =text.like
+  p.like
+    a> href=like_article_text_path(text.article,text) Like Text

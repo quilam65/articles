@@ -1,12 +1,11 @@
 class ImagesController < ApplicationController
-  before_action :get_image, only: [:show, :update, :destroy, :edit]
+  before_action :get_image, only: [:update, :destroy, :edit, :like]
   before_action :image_params, only: [:create, :update]
+
   def index
     @images = Image.all
   end
 
-  def show
-  end
 
   def edit
   end
@@ -32,6 +31,9 @@ class ImagesController < ApplicationController
     return redirect_to images_path, notice: "Delete success!" if @image.destroy
     redirect_to images_path,
     flash[:alert] = "Delete error"
+  end
+  def like
+    like_compoment(@image,@image.article, 'Like image success', 'Error not like')
   end
   private
     def image_params

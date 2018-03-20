@@ -35,11 +35,7 @@ class ArticlesController < ApplicationController
   end
 
   def like
-    @article.like = @article.like.to_i + 1
-    return redirect_to article_path(@article), notice: 'You like article' if @article.save
-    redirect_to articles_path,
-    flash[:alert] = 'Error not found article'
-
+    like_compoment(@article,@article, 'Like article success', 'Error not like')
   end
 
   private
