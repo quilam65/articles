@@ -6,7 +6,6 @@ class ImagesController < ApplicationController
     @images = Image.all
   end
 
-
   def edit
   end
 

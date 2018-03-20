@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    # @articles = Article.includes(:images).includes(:texts).find(params[:id])
+    @attibutes = (@article.images + @article.texts).sort_by &:no
   end
 
   def edit

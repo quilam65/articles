@@ -5,7 +5,6 @@ class TextsController < ApplicationController
     @texts = Text.all
   end
 
-
   def update
     return redirect_to edit_article_path(@text.article), notice: "Update success!" if @text.update(@texts_params)
     redirect_to edit_article_text_path(:article_id => @text.article, id: @text),
