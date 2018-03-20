@@ -1,7 +1,7 @@
 p
   a> href=article_path(article) = article.title
   p
-    a> href= '!#' Like
+    a> href=like_article_path(article) Like article
     a> href= edit_article_path(article) Edit
     =link_to('Delete article', article_path(article), method: :delete, data: {confirm: 'Art you sure'})
   p
