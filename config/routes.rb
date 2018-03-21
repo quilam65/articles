@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'articles#index'
+  get 'private_article', to: :private_article, controller: 'articles'
   resources :articles do
     member do
       get 'like'

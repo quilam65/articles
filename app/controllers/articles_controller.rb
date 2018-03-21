@@ -2,7 +2,11 @@ class ArticlesController < ApplicationController
   before_action :get_articles, only: [:show, :update, :destroy, :edit, :like]
   before_action :article_params, only: [:create, :update]
   def index
-    @articles = Article.public_acticle
+    @articles = Article.public_article
+  end
+
+  def private_article
+    @articles = Article.private_article
   end
 
   def show
