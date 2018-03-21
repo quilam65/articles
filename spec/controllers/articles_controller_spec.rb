@@ -59,5 +59,16 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  describe 'put/update' do
+    it 'update' do
+      article_params = { title: 'new title',like: 10 }
+      put :update, params: { id: article.id, article: article_params }
+      response.should do
+        be_successful
+        redirect_to assigns(:article)
+      end
+    end
+  end
+
 
 end

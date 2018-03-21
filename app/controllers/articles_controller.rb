@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
 
   def update
     return redirect_to article_path(@article), notice: "Create success!" if @article.update(@articles_params)
+
     redirect_to :new
     flash[:alert] = "Create error"
   end
