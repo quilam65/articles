@@ -18,14 +18,14 @@ class ArticlesController < ApplicationController
 
   def update
     return redirect_to article_path(@article), notice: "Create success!" if @article.update(@articles_params)
-    redirect_to :new,
+    redirect_to :new
     flash[:alert] = "Create error"
   end
 
   def create
     @article = Article.new(@articles_params)
     return redirect_to new_article_image_path(@article), notice: "Create success!" if @article.save
-    redirect_to :new,
+    render :new
     flash[:alert] = "Create error"
   end
 
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      @articles_params = params.require(:article).permit(:title, :date_up)
+      @articles_params = params.require(:article).permit(:title, :date_up, :like)
     end
     def get_articles
       @article = Article.find(params[:id])
