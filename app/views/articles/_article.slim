@@ -1,8 +1,11 @@
 p
-  a> href=article_path(article) = article.title
+  h4
+    a> href=article_path(article) = article.title
   p
     a.like_like> href=like_article_path(article) Like article
     a> href= edit_article_path(article) Edit
     =link_to('Delete article', article_path(article), class: 'delete', method: :delete, data: {confirm: 'Art you sure'})
-  p
-    = article.like if article.like>0
+  - if article.like>0
+    p.like_show
+      |Like artile:
+      = article.like
