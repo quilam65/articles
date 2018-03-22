@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   scope :public_article, -> {where('date_up <= ?', Time.now)}
   scope :private_article, -> {where('date_up > ?', Time.now)}
   validates :title, :date_up, presence: true
-  validates :like, numericality: { greater_than: 0 }
+  validates :like, numericality: { greater_than: -1 }
 
   private
     def chage_time_zone

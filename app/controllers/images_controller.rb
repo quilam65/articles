@@ -18,7 +18,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(@images_params)
     return redirect_to new_article_text_path(@image.article), notice: "Create success!" if @image.save
-    redirect_to :new,
+    redirect_to :new
     flash[:alert] = "Create error"
   end
 
@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
 
   def destroy
     return redirect_to edit_article_path(@image.article), notice: "Delete success!" if @image.destroy
-    redirect_to images_path,
+    redirect_to edit_article_path(@image.article_id),
     flash[:alert] = "Delete error"
   end
   def like
@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
   end
   private
     def image_params
-        @images_params = params.require(:image).permit(:headline, :no, :image, :article_id)
+        @images_params = params.require(:image).permit(:headline, :no, :image, :article_id, :like)
     end
     def get_image
       @image = Image.find(params[:id])

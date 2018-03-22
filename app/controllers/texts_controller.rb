@@ -14,7 +14,7 @@ class TextsController < ApplicationController
   def create
     @text = Text.new(@texts_params)
     return redirect_to article_path(@text.article_id), notice: "Create success!" if @text.save
-    redirect_to :new,
+    render :new
     flash[:alert] = "Create error"
   end
 
@@ -24,7 +24,7 @@ class TextsController < ApplicationController
 
   def destroy
     return redirect_to edit_article_path(@text.article), notice: "Delete success!" if @text.destroy
-    redirect_to articles_path,
+    redirect_to articles_path
     flash[:alert] = "Delete error"
   end
 
@@ -33,8 +33,7 @@ class TextsController < ApplicationController
   end
   private
     def text_params
-      @texts_params = params.require(:text).permit(:headline, :no, :content, :article_id)
-
+      @texts_params = params.require(:text).permit(:headline, :no, :content, :article_id, :like)
     end
     def get_Texts
       @text = Text.find(params[:id])

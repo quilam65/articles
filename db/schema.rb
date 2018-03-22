@@ -15,13 +15,13 @@ ActiveRecord::Schema.define(version: 20180319135621) do
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.datetime "date_up"
-    t.integer "like"
+    t.integer "like", default: 0
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "headline"
     t.string "image"
-    t.integer "like"
+    t.integer "like", default: 0
     t.integer "no"
     t.bigint "article_id"
     t.index ["article_id"], name: "index_images_on_article_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180319135621) do
   create_table "texts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "headline"
     t.integer "no"
-    t.integer "like"
+    t.integer "like", default: 0
     t.text "content"
     t.bigint "article_id"
     t.index ["article_id"], name: "index_texts_on_article_id"

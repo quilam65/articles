@@ -3,7 +3,7 @@ FactoryBot.define do
     headline 'Headline'
     no 1
     image 'acbde.jpg'
-    article_id 1
+    article_id { create(:article).id }
     like 4
   end
 end

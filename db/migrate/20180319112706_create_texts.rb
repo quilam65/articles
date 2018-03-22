@@ -3,7 +3,7 @@ class CreateTexts < ActiveRecord::Migration[5.1]
     create_table :texts do |t|
       t.string :headline
       t.integer :no
-      t.integer :like
+      t.integer :like, default: 0
       t.text :content
     end
   end

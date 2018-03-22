@@ -43,7 +43,7 @@ RSpec.describe ArticlesController, type: :controller do
     end
     context 'fail' do
       it "creates a new fails" do
-        post :create, params: { article: FactoryBot.attributes_for(:article, like: -1.to_i) }
+        post :create, params: { article: FactoryBot.attributes_for(:article, like: -1) }
         expect(response).to render_template :new
       end
     end
@@ -61,12 +61,17 @@ RSpec.describe ArticlesController, type: :controller do
 
   describe 'put/update' do
     it 'update' do
-      article_params = { title: 'new title',like: 10 }
+      article_params = { title: 'new title'}
       put :update, params: { id: article.id, article: article_params }
-      response.should do
-        be_successful
-        redirect_to assigns(:article)
-      end
+      expect(assigns(:article).title).to eq(article_params[:title])
+      response.should redirect_to assigns(:article)
+    end
+  end
+
+  describe 'like' do
+    it 'update like' do
+      get :like, params: {id: article.id}
+      expect(assigns(:article).like).to eq(article.like+1)
     end
   end
 

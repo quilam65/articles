@@ -3,7 +3,7 @@ FactoryBot.define do
     headline 'Headline'
     no 2
     content 'aadd a da d ad a '
-    article_id 1
+    article_id { create(:article).id }
     like 5
   end
 end
