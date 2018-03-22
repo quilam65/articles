@@ -75,5 +75,13 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  describe '#index#private' do
+    let!(:articles) { create_list(:article, 5, date_up: Time.now + 10*60*60) }
+    it 'gets a list articles private' do
+      get :private_article
+      expect(assigns(:articles).size).to eq articles.size
+    end
+  end
+
 
 end
