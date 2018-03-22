@@ -1,10 +1,12 @@
 p
   h4
-    a> href=article_path(article) = article.title
+    a.desc> href=article_path(article) = article.title
+  p.desc
+    =article.texts.first.content
   p
-    a.like_like> href=like_article_path(article) Like article
-    a> href= edit_article_path(article) Edit
-    =link_to('Delete article', article_path(article), class: 'delete', method: :delete, data: {confirm: 'Art you sure'})
+    a.btn.btn-info.like_like> href=like_article_path(article) Like article
+    a.btn.btn-warning> href= edit_article_path(article) Edit
+    =link_to('Delete article', article_path(article), class: 'btn btn-danger', method: :delete, data: {confirm: 'Art you sure'})
   - if article.like>0
     p.like_show
       |Like artile:
