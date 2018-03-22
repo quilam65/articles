@@ -1,11 +1,15 @@
 h1 Text
 p
-  |Like:
-  =@article.like
+  - if @article.like > 0
+    |Like:
+    =@article.like
   p
     a> href=like_article_path(@article) Like article
-= @article.title
-= @article.date_up
+h4
+  = @article.title
+span
+  |created: 
+  = @article.date_up
 - @attibutes.each do |array|
   = render 'attibutes_image_text', array: array
 

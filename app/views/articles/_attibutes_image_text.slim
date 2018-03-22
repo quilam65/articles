@@ -1,18 +1,18 @@
 -if array.try(:image)
   p
-    p = array.like
     img src=array.image
   p.like
-    |Like:
-    =array.like
+    - if array.like > 0
+      |Like image:
+      =array.like
     p.like
-      a> href=like_article_image_path(array.article,array) Like Image
+      a.like_like> href=like_article_image_path(array.article,array) Like Image
 -else
   p
-    p = array.like
     p = array.content
   p.like
-    |Like:
-    =array.like
+    - if array.like > 0
+      |Like text:
+      = array.like
     p.like
-      a> href=like_article_text_path(array.article,array) Like Text
+      a.like_like> href=like_article_text_path(array.article,array) Like Text
