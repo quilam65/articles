@@ -11,5 +11,15 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
-//= require_tree .
+//= require bootstrap
+
+//= require jquery
+
+$(window).ready(function(){
+  var currentdate = new Date()
+  $('#time_1i option[value='+currentdate.getFullYear()+']').attr('selected','selected');
+  $('#time_2i option[value='+(currentdate.getMonth()+1)+']').attr('selected','selected');
+  $('#time_3i option[value='+currentdate.getDate()+']').attr('selected','selected');
+  $('#time_4i option[value='+currentdate.getHours()+']').attr('selected','selected');
+  $('#time_5i option[value='+currentdate.getMinutes()+']').attr('selected','selected');
+});
