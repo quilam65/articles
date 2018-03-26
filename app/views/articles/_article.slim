@@ -2,7 +2,7 @@ p
   h4
     a.desc> href=article_path(article) = article.title
   p.desc
-    =article.texts.first.content
+    =article.texts.first.try(:content)
   p
     a.btn.btn-info.like_like> href=like_article_path(article) Like article
     a.btn.btn-warning> href= edit_article_path(article) Edit

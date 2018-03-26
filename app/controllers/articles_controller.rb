@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :article_params, only: [:create, :update]
 
   def index
-    @articles = Article.public_article
+    @articles = Article.public_article.order('date_up desc')
   end
 
   def private_article

@@ -13,8 +13,9 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(@images_params)
+    
     return redirect_to new_article_text_path(@image.article), notice: 'Create success!' if @image.save
-    redirect_to :new
+    render :new
     flash[:alert] = 'Create error'
   end
 

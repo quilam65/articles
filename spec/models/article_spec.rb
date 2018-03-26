@@ -4,5 +4,5 @@ RSpec.describe Article, :type => :model do
   it { should validate_presence_of(:date_up) }
   it { should have_many(:texts) }
   it { should have_many(:images) }
-  it { shpuld validate_numericality-of(:like).is_grater_than(-1) }
+  it { should validate_numericality_of(:like).is_greater_than(-1) }
 end

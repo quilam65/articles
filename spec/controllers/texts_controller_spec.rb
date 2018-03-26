@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe TextsController, type: :controller do
-  # let(:text) { create(:text) }
   let!(:article) { create(:article) }
   let(:text) { create(:text) }
 
